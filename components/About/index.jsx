@@ -34,7 +34,7 @@ const About = ({ aboutRef }) => {
                         h3
                         weight={"hairline"}
                     >
-                        Hi! I'm John Andrew Ing and I'm a MS Computer Science student at the De Le Salle University.
+                        Hi! I&apos;m John Andrew Ing and I&apos;m a MS Computer Science student at the De Le Salle University.
                     </Text>
                 </div>
                 <Spacer y={2} />
