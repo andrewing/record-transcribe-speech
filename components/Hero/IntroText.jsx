@@ -7,7 +7,7 @@ const IntroText = () => {
             weight="bold"
         >
             Hello, Voice Actress (or are you? 🤨). <br></br>
-            Just to be sure, what's the&nbsp;
+            Just to be sure, what&#39;s the&nbsp;
             <Text
                 span
                 size={"$6xl"}

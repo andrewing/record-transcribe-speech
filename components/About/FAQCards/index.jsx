@@ -14,7 +14,7 @@ const FAQCards = () => {
         },
         {
             question: "How?",
-            desc: "The speech recognizer will be trained on the already existing data from DLSU's ongoing research as well as the data that I will be collecting from you"
+            desc: "The speech recognizer will be trained on the already existing data from DLSU&#39;s ongoing research as well as the data that I will be collecting from you"
         },
         {
             question: "Why?",
