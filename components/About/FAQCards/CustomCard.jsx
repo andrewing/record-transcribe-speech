@@ -7,7 +7,7 @@ const CustomCard = ({question, desc}) => {
             borderWeight="extrabold"
             variant="bordered"
             css={{
-                height: "250px",
+                height: "300px",
                 width: "100%",
                 borderColor: "gray",
                 backgroundColor: "black",

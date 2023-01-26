@@ -5,21 +5,21 @@ const FAQCards = () => {
 
     const cards = [
         {
-            question: "Who?",
-            desc: ""
-        },
-        {
             question: "What?",
-            desc: "My Thesis is on the development of a speech recognition system for Filipino and Bisaya children towards use in a healthcare chatbot."
+            desc: "My Thesis is on the development of a speech recognition system for Filipino and Bisaya children towards use in a healthcare chatbot. This is an extension to DLSU's ongoing healthcare chatbot project."
         },
         {
             question: "How?",
-            desc: "The speech recognizer will be trained on the already existing data from DLSU&#39;s ongoing research as well as the data that I will be collecting from you"
+            desc: "The speech recognizer will be trained on the already existing data from DLSU's ongoing research as well as the data that I will be collecting from you"
         },
         {
             question: "Why?",
-            desc: " "
+            desc: "Philippine public schools often have no efficient and systematic way of assessing the physical wellness of children. A speech recognition system can be used to assess the physical wellness of children in a more efficient and systematic way."
         },
+        {
+            question: "Why Female Adults?",
+            desc: "Due to ethical considerations, female voice actresses' speech was used instead of children's speech. Since the frequency of children's voices is, on average, between 250-400 Hz, a suitable alternative for this is the adult female voice which is usually around 200 Hz"
+        }
 
     ]
 
