@@ -33,7 +33,7 @@ const FAQCards = () => {
         >
             {cards.map((card, index) => {
                 return (
-                    <Grid xs={12} md={6}>
+                    <Grid xs={12} md={6} key={index}>
                         <CustomCard question={card.question} desc={card.desc}/>
                     </Grid>
                 )
