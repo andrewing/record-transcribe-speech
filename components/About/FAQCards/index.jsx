@@ -10,7 +10,7 @@ const FAQCards = () => {
         },
         {
             question: "How?",
-            desc: "The speech recognizer will be trained on the already existing data from DLSU's ongoing research as well as the data that I will be collecting from you"
+            desc: "The speech recognizer will be trained on the already existing data from DLSU's ongoing research as well as the data that you 🫵 will be providing."
         },
         {
             question: "Why?",
@@ -19,6 +19,14 @@ const FAQCards = () => {
         {
             question: "Why Female Adults?",
             desc: "Due to ethical considerations, female voice actresses' speech was used instead of children's speech. Since the frequency of children's voices is, on average, between 250-400 Hz, a suitable alternative for this is the adult female voice which is usually around 200 Hz"
+        },
+        {
+            question: "Why Filipino and Bisaya?",
+            desc: "Filipino, also known as Tagalog, is designated as the national language of the Philippines. Bisaya is the second most spoken language in the Philippines."
+        },
+        {
+            question: "Is my data safe?",
+            desc: "Yes. Your data will be stored in a secure database. The data will also not include identifiable details about you; it will be anonymized. The data will be used for research purposes only and will not be shared with any third parties." 
         }
 
     ]
@@ -33,7 +41,7 @@ const FAQCards = () => {
         >
             {cards.map((card, index) => {
                 return (
-                    <Grid xs={12} md={6} key={index}>
+                    <Grid xs={6} md={6} key={index}>
                         <CustomCard question={card.question} desc={card.desc}/>
                     </Grid>
                 )

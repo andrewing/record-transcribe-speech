@@ -1,21 +1,28 @@
 import { Card, Text } from "@nextui-org/react"
 
-const CustomCard = ({question, desc}) => {
+const CustomCard = ({ question, desc }) => {
     return (
+
         <Card
             isHoverable
             borderWeight="extrabold"
             variant="bordered"
             css={{
-                height: "300px",
-                width: "100%",
                 borderColor: "gray",
                 backgroundColor: "black",
                 borderRadius: "20px",
             }}
         >
+            
             <Card.Header>
-                <Text b h3 style={{margin: "0px 10px"}}>
+                <Text
+                    b
+                    h3
+                    weight={"black"}
+                    style={{
+                        margin: "0px 10px"
+                    }}
+                >
                     {question}
                 </Text>
             </Card.Header>
@@ -24,7 +31,10 @@ const CustomCard = ({question, desc}) => {
                 <Text
                     h4
                     weight={"normal"}
-                    style={{margin: "0px 10px"}}
+                    style={{
+                        margin: "0px 10px",
+                        textAlign: "justify",
+                    }}
                 >
                     {desc}
                 </Text>

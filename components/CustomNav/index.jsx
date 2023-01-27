@@ -1,7 +1,7 @@
 import { Navbar } from "@nextui-org/react"
 import { useEffect } from "react"
 
-const CustomNav = ({active}) => {
+const CustomNav = ({ active }) => {
     return (
         <Navbar
             isBordered variant={"floating"}
@@ -9,7 +9,8 @@ const CustomNav = ({active}) => {
                 zIndex: 1000,
             }}
         >
-            <Navbar.Content hideIn="xs"
+            <Navbar.Content
+                hideIn="xs"
                 css={{
                     display: 'flex',
                     alignItems: 'center',
@@ -18,25 +19,28 @@ const CustomNav = ({active}) => {
                 }}
             >
                 <Navbar.Link
+                    id="recordnav"
                     as="a"
-                    isActive={active==="record"}
-                    href="#"    
+                    isActive={active === "record"}
+                    href="#"
                 >
                     Record
                 </Navbar.Link>
                 <Navbar.Link
+                    id="aboutnav"
                     as="a"
-                    isActive={active==="about"}
+                    isActive={active === "about"}
                     href="#about"
                 >
                     About
                 </Navbar.Link>
                 <Navbar.Link
+                    id="contactnav"
                     as="a"
-                    isActive={active==="contact"}
+                    isActive={active === "contact"}
                     href="#contact"
                 >
-                    Contact Us
+                    Contact
                 </Navbar.Link>
             </Navbar.Content>
         </Navbar>

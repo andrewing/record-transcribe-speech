@@ -4,16 +4,16 @@ const { Container, Text, Card, Grid, Spacer } = require("@nextui-org/react")
 
 const About = ({ aboutRef }) => {
     return (
-        <div id="about" ref={aboutRef} style={{ scrollMarginTop: "160px" }}>
+        <div id="about" ref={aboutRef} style={{ scrollMarginTop: "220px" }}>
+            
+            <Spacer y={3} />
             <Container
                 display="flex"
                 justify="center"
                 direction="column"
-                align="center"
                 alignContent="center"
                 alignItems="center"
                 css={{
-                    height: "100vh",
                     width: "100%",
                 }}
             >
@@ -32,14 +32,14 @@ const About = ({ aboutRef }) => {
                 >
                     <Text
                         h3
-                        weight={"hairline"}
+                        weight={"thin"}
                     >
                         Hi! I&apos;m John Andrew Ing and I&apos;m a MS Computer Science student at the De Le Salle University.
                     </Text>
                 </div>
-                <Spacer y={2} />
                 <FAQCards />
             </Container>
+            <Spacer y={5} />
         </div>
     )
 }

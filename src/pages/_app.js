@@ -23,16 +23,15 @@ export default function App({ Component, pageProps }) {
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          console.log(entry.target.id)
           setNavActive(entry.target.id)
         }
       });
     }, { 
-      threshold: 0.75
+      threshold: 0.7
     });
     observer.observe(refs.recordRef.current);
     observer.observe(refs.aboutRef.current);
-    // observer.observe(refs.contactRef.current);
+    observer.observe(refs.contactRef.current);
   }, []);
 
 
