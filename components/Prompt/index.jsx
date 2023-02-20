@@ -1,7 +1,11 @@
-import { Container, Spacer, Text, Tooltip } from "@nextui-org/react"
+import { Button, Container, Grid, Progress, Spacer, Text, Tooltip } from "@nextui-org/react"
 import Image from "next/image"
+import csvParser from "csv-parser"
+import { useEffect, useState } from "react"
 
-const Prompt = () => {
+const Prompt = ({currQuestion, strCurrQuestion, strCurrPrompt}) => {
+
+
     return (
         <Container
             display="flex"
@@ -13,11 +17,11 @@ const Prompt = () => {
             }}
         >
             <Text span h2 css={{ fontFamily: "$sans" }}>
-                Q: What is your name? &nbsp;
-                <Tooltip 
-                content="This is what a nurse or healthcare worker would ask"
-                color="invert"
-                offset={35}
+                {strCurrQuestion} &nbsp;
+                <Tooltip
+                    content="contextual information on what a nurse would need to know"
+                    color="invert"
+                    offset={35}
                 >
                     <Image
                         src={"/infobutton.png"}
@@ -32,11 +36,11 @@ const Prompt = () => {
             </Text>
 
             <Text span h1 css={{ fontFamily: "$sans" }}>
-                &ldquo;my name is hello hello&rdquo;&nbsp;
-                <Tooltip 
-                content="Read this when recording!"
-                color="invert"
-                offset={30}
+                &ldquo;{strCurrPrompt}&rdquo;&nbsp;
+                <Tooltip
+                    content="Read this when recording!"
+                    color="invert"
+                    offset={30}
                 >
                     <Image
                         src="/infobutton.png"
@@ -51,7 +55,7 @@ const Prompt = () => {
             </Text>
             <Spacer y={0.5} />
             <Text css={{ fontFamily: "$sans" }}>
-                Progress: 0/510
+                Progress: {currQuestion + 1} / 372
             </Text>
         </Container>
     )

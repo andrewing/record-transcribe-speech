@@ -34,6 +34,8 @@ async function isCodeValid(req, res) {
                 name: findRes[0].name,
                 id: findRes[0]._id,
                 success: true,
+                progressQuestion: findRes[0].progressQuestion,
+                progressPrompt: findRes[0].progressPrompt,
             });
         }
     } catch (error) {

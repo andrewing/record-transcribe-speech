@@ -4,12 +4,18 @@ import { Container, Spacer, Text } from "@nextui-org/react";
 import { Router, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const Record = ({ }) => {
+const Record = ({}) => {
     const router = useRouter()
 
     const [isLoading, setIsLoading] = useState(true)
     const [name, setName] = useState('Voice Actress')
     const [id, setId] = useState('')
+
+    const [data, setData] = useState(null)
+    const [currQuestion, setCurrQuestion] = useState(0)
+    const [currPrompt, setCurrPrompt] = useState(0)
+    const [strCurrQuestion, setStrCurrQuestion] = useState("")
+    const [strCurrPrompt, setStrCurrPrompt] = useState("")
 
     useEffect(() => {
         const code = localStorage.getItem('code')
@@ -25,11 +31,46 @@ const Record = ({ }) => {
             data.success ? "" : router.push('/')
             setName(data.name)
             setId(data.id)
+            setCurrQuestion(data.progressQuestion)
+            setCurrPrompt(data.progressPrompt)
             setIsLoading(false)
-            
         })
 
     }, [])
+
+
+    
+    
+    useEffect(() => {
+        const fetchCsv = async () => {
+            const res = await fetch("/data.csv")
+            const text = await res.text()
+            const lines = text.split("\n")
+            setData(lines)
+        }
+        fetchCsv()
+    }, [])
+
+    useEffect(() => {
+        if (data) {
+            let processedData = data[currQuestion].split(",")
+            // remove empty strings from array
+            processedData = processedData.filter((item) => (item !== "" && item !== "\r"))
+            let strCurrQuestion = processedData[0]
+            let strCurrPrompt = processedData[currPrompt + 1]
+            setStrCurrQuestion(strCurrQuestion)
+            setStrCurrPrompt(strCurrPrompt)
+        }
+    }, [data, currQuestion, currPrompt])
+
+    const handleNextPrompt = () => {
+        if (currPrompt + 1 < data[currQuestion].split(",").length) {
+            setCurrPrompt(currPrompt + 1)
+        } else {
+            setCurrPrompt(0)
+            setCurrQuestion(currQuestion + 1)
+        }
+    }
 
 
     if (isLoading) {
@@ -59,20 +100,23 @@ const Record = ({ }) => {
                 </Text>
                 !
             </Text>
-            <Prompt />
-            <RecordSection id={id} />
+            <Prompt
+                currQuestion={currQuestion}
+                strCurrQuestion={strCurrQuestion}
+                strCurrPrompt={strCurrPrompt}
+            />
+            <RecordSection
+                id={id}
+                handleNextPrompt={handleNextPrompt}
+                currQuestion={currQuestion}
+                currPrompt={currPrompt}
+                strCurrQuestion={strCurrQuestion}
+                strCurrPrompt={strCurrPrompt}
+            />
         </Container >
     )
 }
 
 
-export async function getStaticProps() {
-
-    return {
-        props: {
-            data: 'hello'
-        }
-    };
-}
 
 export default Record;
