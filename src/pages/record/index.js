@@ -43,7 +43,7 @@ const Record = ({}) => {
     
     useEffect(() => {
         const fetchCsv = async () => {
-            const res = await fetch("/data.csv")
+            const res = await fetch("/dataspeechrecord.csv")
             const text = await res.text()
             const lines = text.split("\n")
             setData(lines)
