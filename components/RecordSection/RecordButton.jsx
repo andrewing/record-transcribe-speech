@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const { Tooltip, Button } = require("@nextui-org/react")
 
-const RecordButton = ({ startRecording }) => {
+const RecordButton = ({ startRecording, isLoading }) => {
     return (
         <Tooltip
             content="click me to record!"
@@ -20,6 +20,7 @@ const RecordButton = ({ startRecording }) => {
                 auto
                 shadow
                 color={"success"}
+                disabled={isLoading}
                 icon={
                     <Image
                         src="/recordbutton.png"

@@ -27,7 +27,6 @@ const Record = ({}) => {
         }
 
         isCodeValid().then((data) => {
-            console.log(data)
             data.success ? "" : router.push('/')
             setName(data.name)
             setId(data.id)
@@ -37,9 +36,6 @@ const Record = ({}) => {
         })
 
     }, [])
-
-
-    
     
     useEffect(() => {
         const fetchCsv = async () => {
@@ -64,7 +60,10 @@ const Record = ({}) => {
     }, [data, currQuestion, currPrompt])
 
     const handleNextPrompt = () => {
-        if (currPrompt + 1 < data[currQuestion].split(",").length) {
+        let processedData = data[currQuestion].split(",")
+            // remove empty strings from array
+        processedData = processedData.filter((item) => (item !== "" && item !== "\r"))
+        if (currPrompt + 2 < processedData.length) {
             setCurrPrompt(currPrompt + 1)
         } else {
             setCurrPrompt(0)
@@ -112,6 +111,7 @@ const Record = ({}) => {
                 currPrompt={currPrompt}
                 strCurrQuestion={strCurrQuestion}
                 strCurrPrompt={strCurrPrompt}
+                isLoading={isLoading}
             />
         </Container >
     )

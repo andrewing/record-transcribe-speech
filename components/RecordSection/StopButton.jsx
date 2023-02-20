@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const { Tooltip, Button } = require("@nextui-org/react")
 
-const StopButton = ({ stopRecording }) => {
+const StopButton = ({ stopRecording,isLoading }) => {
     return (
         <Tooltip
             content="click me to stop recording"
@@ -20,6 +20,7 @@ const StopButton = ({ stopRecording }) => {
                 auto
                 shadow
                 color={"error"}
+                disabled={isLoading}
                 icon={
                     <Image
                         src="/stopbutton.png"

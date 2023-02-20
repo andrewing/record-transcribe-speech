@@ -23,6 +23,7 @@ const RecordSection = ({
     currPrompt,
     strCurrQuestion,
     strCurrPrompt,
+    isLoading,
  }) => {
 
     // const { status, startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({ audio: true });
@@ -106,9 +107,9 @@ const RecordSection = ({
                         <Spacer x={1} />
                         {
                             status !== 'recording' ?
-                                <RecordButton startRecording={startRecording} />
+                                <RecordButton isLoading={isLoading} startRecording={startRecording} />
                                 :
-                                <StopButton stopRecording={stopRecording} />
+                                <StopButton isLoading={isLoading} stopRecording={stopRecording} />
                         }
                         <Spacer x={1} />
                         <audio src={status === "idle" ? null : mediaBlobUrl} controls ref={audioRef}/>
