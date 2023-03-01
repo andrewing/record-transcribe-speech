@@ -16,15 +16,15 @@ const ReactMediaRecorder = dynamic(
 //     { ssr: false }
 // )
 
-const RecordSection = ({ 
-    id, 
+const RecordSection = ({
+    id,
     handleNextPrompt,
     currQuestion,
     currPrompt,
     strCurrQuestion,
     strCurrPrompt,
     isLoading,
- }) => {
+}) => {
 
     // const { status, startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({ audio: true });
     const [loading, setLoading] = useState(false)
@@ -107,12 +107,12 @@ const RecordSection = ({
                         <Spacer x={1} />
                         {
                             status !== 'recording' ?
-                                <RecordButton isLoading={isLoading} startRecording={startRecording} />
+                                <RecordButton isLoading={loading} startRecording={startRecording} />
                                 :
-                                <StopButton isLoading={isLoading} stopRecording={stopRecording} />
+                                <StopButton isLoading={loading} stopRecording={stopRecording} />
                         }
                         <Spacer x={1} />
-                        <audio src={status === "idle" ? null : mediaBlobUrl} controls ref={audioRef}/>
+                        <audio src={status === "idle" ? null : mediaBlobUrl} controls ref={audioRef} />
                         <Spacer x={1} />
                         <UploadButton
                             status={status}
