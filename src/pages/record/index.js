@@ -4,7 +4,7 @@ import { Container, Spacer, Text } from "@nextui-org/react";
 import { Router, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const Record = ({}) => {
+const Record = ({ }) => {
     const router = useRouter()
 
     const [isLoading, setIsLoading] = useState(true)
@@ -36,7 +36,7 @@ const Record = ({}) => {
         })
 
     }, [])
-    
+
     useEffect(() => {
         const fetchCsv = async () => {
             const res = await fetch("/dataspeechrecord.csv")
@@ -49,19 +49,24 @@ const Record = ({}) => {
 
     useEffect(() => {
         if (data) {
-            let processedData = data[currQuestion].split(",")
-            // remove empty strings from array
-            processedData = processedData.filter((item) => (item !== "" && item !== "\r"))
-            let strCurrQuestion = processedData[0]
-            let strCurrPrompt = processedData[currPrompt + 1]
-            setStrCurrQuestion(strCurrQuestion)
-            setStrCurrPrompt(strCurrPrompt)
+            console.log(currQuestion, data.length)
+            if (currQuestion >= data.length) {
+                router.push('/thankyou')
+            } else {
+                let processedData = data[currQuestion].split(",")
+                // remove empty strings from array
+                processedData = processedData.filter((item) => (item !== "" && item !== "\r"))
+                let strCurrQuestion = processedData[0]
+                let strCurrPrompt = processedData[currPrompt + 1]
+                setStrCurrQuestion(strCurrQuestion)
+                setStrCurrPrompt(strCurrPrompt)
+            }
         }
     }, [data, currQuestion, currPrompt])
 
     const handleNextPrompt = () => {
         let processedData = data[currQuestion].split(",")
-            // remove empty strings from array
+        // remove empty strings from array
         processedData = processedData.filter((item) => (item !== "" && item !== "\r"))
         if (currPrompt + 2 < processedData.length) {
             setCurrPrompt(currPrompt + 1)

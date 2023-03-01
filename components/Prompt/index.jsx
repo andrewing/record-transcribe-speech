@@ -3,7 +3,7 @@ import Image from "next/image"
 import csvParser from "csv-parser"
 import { useEffect, useState } from "react"
 
-const Prompt = ({currQuestion, strCurrQuestion, strCurrPrompt}) => {
+const Prompt = ({ currQuestion, strCurrQuestion, strCurrPrompt }) => {
 
 
     return (
@@ -17,7 +17,7 @@ const Prompt = ({currQuestion, strCurrQuestion, strCurrPrompt}) => {
             }}
         >
             <Text span h2 css={{ fontFamily: "$sans" }}>
-                {strCurrQuestion} &nbsp;
+                Q{currQuestion+1}: {strCurrQuestion} &nbsp;
                 <Tooltip
                     content="contextual information on what a nurse would need to know"
                     color="invert"
@@ -55,7 +55,7 @@ const Prompt = ({currQuestion, strCurrQuestion, strCurrPrompt}) => {
             </Text>
             <Spacer y={0.5} />
             <Text css={{ fontFamily: "$sans" }}>
-                Progress: {currQuestion + 1} / 372
+                Progress: {currQuestion + 1} / 370 Questions
             </Text>
         </Container>
     )
