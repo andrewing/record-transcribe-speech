@@ -47,13 +47,32 @@ const Record = ({ }) => {
         fetchCsv()
     }, [])
 
+    const splitIgnoringQuotes = str => {
+        let pattern = /("[^"]*")|('[^']*')|([^,]+)/g;
+        let result = [];
+        str.replace(pattern, function (match, doubleQuoted, singleQuoted, unquoted) {
+            if (unquoted) {
+                result.push(unquoted.trim());
+            } else {
+                result.push(match);
+            }
+        });
+        return result;
+    }
+
+    const removeCommasFromEnd = str => {
+        return str.replace(/,+$/, '');
+    }
+
     useEffect(() => {
         if (data) {
             console.log(currQuestion, data.length)
             if (currQuestion >= data.length) {
                 router.push('/thankyou')
             } else {
-                let processedData = data[currQuestion].split(",")
+                // remove all commas at the end of the string
+                let processedData = removeCommasFromEnd(data[currQuestion])
+                processedData = splitIgnoringQuotes(processedData)
                 // remove empty strings from array
                 processedData = processedData.filter((item) => (item !== "" && item !== "\r"))
                 let strCurrQuestion = processedData[0]
@@ -65,7 +84,11 @@ const Record = ({ }) => {
     }, [data, currQuestion, currPrompt])
 
     const handleNextPrompt = () => {
-        let processedData = data[currQuestion].split(",")
+        // split the data by comma except in quotation marks
+        let processedData = removeCommasFromEnd(data[currQuestion])
+        processedData = splitIgnoringQuotes(processedData)
+        console.log("hello", processedData)
+
         // remove empty strings from array
         processedData = processedData.filter((item) => (item !== "" && item !== "\r"))
         if (currPrompt + 2 < processedData.length) {

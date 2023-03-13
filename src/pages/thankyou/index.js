@@ -28,7 +28,7 @@ const ThankYou = () => {
                 <Text
                     h5
                 >
-                    You have saved my research. I am eternally grateful for your time and effort in helping me!
+                    You have saved my research. I am eternally grateful for your time and effort in helping me! 
                 </Text>
             </Container>
         </div>
