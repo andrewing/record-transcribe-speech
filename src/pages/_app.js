@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }) {
           property="og:title"
           content="Record"
         />
-        <meta property="og:image" content={"/recordbutton.png"} />
+        <meta property="og:image" content={"/playbutton.png"} />
       </Head>
       <NextThemesProvider
         enableSystem={false}
