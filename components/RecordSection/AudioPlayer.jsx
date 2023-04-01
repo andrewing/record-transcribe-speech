@@ -45,4 +45,7 @@ const AudioPlayer = forwardRef(({ src, isLargeScreen }, ref) => {
     );
 })
 
+AudioPlayer.displayName = 'AudioPlayer';
+
+
 export default AudioPlayer;
