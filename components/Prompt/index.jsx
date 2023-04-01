@@ -5,7 +5,6 @@ import { useEffect, useState } from "react"
 
 const Prompt = ({ currQuestion, strCurrQuestion, strCurrPrompt }) => {
 
-
     return (
         <Container
             display="flex"
@@ -17,7 +16,38 @@ const Prompt = ({ currQuestion, strCurrQuestion, strCurrPrompt }) => {
             }}
         >
             <Text span h2 css={{ fontFamily: "$sans" }}>
-                Q{currQuestion+1}: {strCurrQuestion} &nbsp;
+                Q{currQuestion + 1}:&nbsp;
+                <Text
+                    span
+                    showIn={"sm"}
+                >
+                    <Tooltip
+                        content={`context: ${strCurrQuestion}`}
+                        color="invert"
+                        offset={35}
+                    >
+                        <Image
+                            src={"/infobutton.png"}
+                            alt="info button"
+                            height={20}
+                            width={20}
+                            style={{
+                                cursor: "pointer",
+                            }}
+                        />
+                    </Tooltip>
+                </Text>
+            </Text>
+
+            <Text
+                span
+                h3
+                css={{
+                    fontFamily: "$sans",
+                }}
+                hideIn={"sm"}
+            >
+                {strCurrQuestion} &nbsp;
                 <Tooltip
                     content="contextual information on what a nurse would need to know"
                     color="invert"
@@ -35,8 +65,28 @@ const Prompt = ({ currQuestion, strCurrQuestion, strCurrPrompt }) => {
                 </Tooltip>
             </Text>
 
-            <Text span h1 css={{ fontFamily: "$sans" }}>
+            <Text
+                span
+                h1
+                css={{
+                    fontSize: '$2xl',
+                    fontFamily: "$sans",
+                    '@xs': {
+                        fontSize: '$3xl',
+                    },
+                    '@sm': {
+                        fontSize: '$4xl',
+                    },
+                    '@md': {
+                        fontSize: '$5xl',
+                    },
+                    '@lg': {
+                        fontSize: '$5xl',
+                    },
+                }}
+            >
                 &ldquo;{strCurrPrompt}&rdquo;&nbsp;
+                {/* Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium,  */}
                 <Tooltip
                     content="Read this when recording!"
                     color="invert"

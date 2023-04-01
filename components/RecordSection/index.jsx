@@ -4,6 +4,7 @@ import audioToBase64 from "@/components/RecordSection/audioToBase64";
 import RecordButton from "./RecordButton";
 import StopButton from "./StopButton";
 import UploadButton from "./UploadButton";
+import AudioPlayer from "./AudioPlayer";
 
 const { Container, Spacer, Tooltip, Button, Loading } = require("@nextui-org/react")
 const ReactMediaRecorder = dynamic(
@@ -57,12 +58,24 @@ const RecordSection = ({
     };
 
 
+    const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsLargeScreen(window.innerWidth >= 700);
+        };
+        handleResize(); // initialize the state variable with the current window size
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <div
             style={{
                 position: 'fixed',
                 bottom: '90px',
-                width: '600px',
+                maxWidth: '600px',
+                width: '160%',
                 height: '60px',
                 left: '50%',
                 marginLeft: '-300px',
@@ -112,7 +125,10 @@ const RecordSection = ({
                                 <StopButton isLoading={loading} stopRecording={stopRecording} />
                         }
                         <Spacer x={1} />
-                        <audio src={status === "idle" ? null : mediaBlobUrl} controls ref={audioRef} />
+                        {/* if screen is smaller than 700px */}
+
+                        <AudioPlayer src={status === "idle" ? null : mediaBlobUrl} isLargeScreen={isLargeScreen} ref={audioRef} />
+
                         <Spacer x={1} />
                         <UploadButton
                             status={status}
