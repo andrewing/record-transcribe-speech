@@ -2,13 +2,24 @@ import '@/styles/globals.css'
 import { ThemeProvider as NextThemesProvider, useTheme as useNextTheme } from 'next-themes';
 import { createTheme, NextUIProvider } from "@nextui-org/react"
 import Head from 'next/head';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function App({ Component, pageProps }) {
 
   const darkTheme = createTheme({
     type: 'dark',
   })
+
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 700);
+    };
+    handleResize(); // initialize the state variable with the current window size
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -34,6 +45,7 @@ export default function App({ Component, pageProps }) {
         <NextUIProvider>
           <Component
             {...pageProps}
+            isLargeScreen={isLargeScreen}
           />
         </NextUIProvider>
       </NextThemesProvider>

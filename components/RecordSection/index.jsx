@@ -25,6 +25,7 @@ const RecordSection = ({
     strCurrQuestion,
     strCurrPrompt,
     isLoading,
+    isLargeScreen
 }) => {
 
     // const { status, startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({ audio: true });
@@ -57,17 +58,6 @@ const RecordSection = ({
         setLoading(false)
     };
 
-
-    const [isLargeScreen, setIsLargeScreen] = useState(false);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsLargeScreen(window.innerWidth >= 700);
-        };
-        handleResize(); // initialize the state variable with the current window size
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
 
     return (
         <div

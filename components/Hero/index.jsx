@@ -2,9 +2,10 @@ import { useState } from "react";
 import IntroText from "@/components/Hero/IntroText";
 import { useRouter } from "next/router";
 import ErrorModal from "./ErrorModal";
-const { Spacer, Input, Container, Col, Button, Row, Loading, Modal } = require("@nextui-org/react")
+import Image from "next/image";
+const { Spacer, Input, Container, Col, Button, Row, Loading, Modal, Text } = require("@nextui-org/react")
 
-const Hero = ({ recordRef }) => {
+const Hero = ({ recordRef, isLargeScreen }) => {
     const router = useRouter()
 
     const [code, setCode] = useState('')
@@ -26,7 +27,7 @@ const Hero = ({ recordRef }) => {
 
         isCodeValid().then((data) => {
             localStorage.setItem('code', code)
-            if(data.success) {
+            if (data.success) {
                 window.location.replace("/record")
             } else {
                 setError(true)
@@ -59,13 +60,14 @@ const Hero = ({ recordRef }) => {
                     gap={2}
                 >
                     <Input
-                        size="xl"
+                        size={isLargeScreen ? "xl" : "md"}
                         bordered
                         color={error ? "error" : "default"}
                         status={error ? "error" : "default"}
                         labelPlaceholder='Super Secret Code'
                         css={{
                             fontFamily: "$sans",
+                            width: isLargeScreen ? null : "150px",
                         }}
                         onChange={(e) => setCode(e.target.value.toUpperCase())}
                         value={code}
@@ -73,16 +75,19 @@ const Hero = ({ recordRef }) => {
                     <Spacer x={1} />
                     <Button
                         color="gradient"
-                        size="lg"
                         auto
+                        size={isLargeScreen ? "lg" : "md"}
                         shadow
                         onPress={handleClick}
                         css={{
-                            width: "100px",
+                            padding: isLargeScreen ? null : "0 12.5px",
                         }}
                     >
                         {
-                            loading ? <Loading type="points" color="currentColor" size="sm" /> : 'Submit'
+                            loading ?
+                                <Loading type="points" color="currentColor" size="sm" />
+                                :
+                                isLargeScreen ? 'Submit' : <Image src="/playbutton.png" alt="arrow" width="20" height="20" />
                         }
                     </Button>
 

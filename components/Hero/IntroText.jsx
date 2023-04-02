@@ -6,8 +6,9 @@ const IntroText = () => {
 
         <Text
             css={{
+                fontSize: '$2xl',
                 '@xs': {
-                    fontSize: '$3xl',
+                    fontSize: '$4xl',
                 },
                 '@sm': {
                     fontSize: '$4xl',
@@ -28,8 +29,10 @@ const IntroText = () => {
                 weight="bold"
                 css={{
                     textGradient: "45deg, $blue600 -20%, $pink600 50%",
+                    fontSize: '$2xl',
+
                     '@xs': {
-                        fontSize: '$3xl',
+                        fontSize: '$4xl',
                     },
                     '@sm': {
                         fontSize: '$4xl',

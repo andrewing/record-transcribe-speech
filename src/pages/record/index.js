@@ -4,7 +4,7 @@ import { Container, Spacer, Text } from "@nextui-org/react";
 import { Router, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const Record = ({ }) => {
+const Record = ({ isLargeScreen }) => {
     const router = useRouter()
 
     const [isLoading, setIsLoading] = useState(true)
@@ -140,6 +140,7 @@ const Record = ({ }) => {
                 strCurrQuestion={strCurrQuestion}
                 strCurrPrompt={strCurrPrompt}
                 isLoading={isLoading}
+                isLargeScreen={isLargeScreen}
             />
         </Container >
     )

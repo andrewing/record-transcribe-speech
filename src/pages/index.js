@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 import CustomNav from '@/components/CustomNav'
 import { Router } from 'next/router'
 
-const Home = ({ }) => {
+const Home = ({ isLargeScreen }) => {
 
   const [navActive, setNavActive] = useState("");
 
@@ -39,7 +39,7 @@ const Home = ({ }) => {
   return (
     <main>
       <CustomNav active={navActive} />
-      <Hero recordRef={refs.recordRef} />
+      <Hero recordRef={refs.recordRef} isLargeScreen={isLargeScreen}/>
       <Divider text={"about"} />
       <About aboutRef={refs.aboutRef} />
       <Divider text={"contact"} />
