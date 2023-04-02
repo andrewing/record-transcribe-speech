@@ -50,7 +50,7 @@ const CustomNav = ({ active }) => {
                     rel="noopener noreferrer"
                     target="_blank"
                 >
-                    Tutorial <Spacer x={0.3} /><Image src="/newtabsymbol.png" width={12} height={12} />
+                    Tutorial <Spacer x={0.3} /><Image alt="information symbol" src="/newtabsymbol.png" width={12} height={12} />
                 </Navbar.Link>
             </Navbar.Content>
         </Navbar>

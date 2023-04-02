@@ -4,8 +4,17 @@ import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import PlayButton from './PlayButton';
 import PauseButton from './PauseButton';
 
-const AudioPlayer = forwardRef(({ src, isLargeScreen }, ref) => {
+const AudioPlayer = forwardRef(({ src, isLargeScreen, loading, status }, ref) => {
     const [isPlaying, setIsPlaying] = useState(false);
+    const [disabled, setDisabled] = useState(false)
+
+    useEffect(() => {
+        if (status === 'idle' || status === 'recording' || loading) {
+            setDisabled(true)
+        } else {
+            setDisabled(false)
+        }
+    }, [status, loading])
 
     useEffect(() => {
         // Update the state of `isPlaying` whenever the audio's `paused` property changes
@@ -35,9 +44,15 @@ const AudioPlayer = forwardRef(({ src, isLargeScreen }, ref) => {
             {
                 isLargeScreen ? null : (
                     isPlaying ? (
-                        <PauseButton handlePause={handlePause} />
+                        <PauseButton
+                            disabled={disabled}
+                            handlePause={handlePause}
+                        />
                     ) : (
-                        <PlayButton handlePlay={handlePlay} />
+                        <PlayButton
+                            disabled={disabled}
+                            handlePlay={handlePlay}
+                        />
                     )
                 )
             }

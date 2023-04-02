@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const { Tooltip, Button } = require("@nextui-org/react")
 
-const RecordButton = ({ startRecording, isLoading }) => {
+const RecordButton = ({ startRecording, isLoading, isLargeScreen }) => {
     return (
         <Tooltip
             content="click me to record!"
@@ -10,6 +10,7 @@ const RecordButton = ({ startRecording, isLoading }) => {
             hideArrow
             color="invert"
             offset={-30}
+            isDisabled={!isLargeScreen}
         >
             <Button
                 onPress={startRecording}

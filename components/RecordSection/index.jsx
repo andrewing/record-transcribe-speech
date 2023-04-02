@@ -120,14 +120,28 @@ const RecordSection = ({
                         <Spacer x={1} />
                         {
                             status !== 'recording' ?
-                                <RecordButton isLoading={loading} startRecording={startRecording} />
+                                <RecordButton
+                                    isLoading={loading}
+                                    startRecording={startRecording}
+                                    isLargeScreen={isLargeScreen}
+                                />
                                 :
-                                <StopButton isLoading={loading} stopRecording={stopRecording} />
+                                <StopButton
+                                    isLoading={loading} 
+                                    stopRecording={stopRecording}
+                                    isLargeScreen={isLargeScreen}
+                                />
                         }
                         <Spacer x={1} />
                         {/* if screen is smaller than 700px */}
 
-                        <AudioPlayer src={status === "idle" ? null : mediaBlobUrl} isLargeScreen={isLargeScreen} ref={audioRef} />
+                        <AudioPlayer
+                            status={status}
+                            loading={loading}
+                            src={status === "idle" ? null : mediaBlobUrl}
+                            isLargeScreen={isLargeScreen}
+                            ref={audioRef}
+                        />
 
                         <Spacer x={1} />
                         <UploadButton
@@ -137,6 +151,7 @@ const RecordSection = ({
                                 clearBlobUrl()
                             }}
                             loading={loading}
+                            isLargeScreen={isLargeScreen}
                         />
 
                     </Container>
